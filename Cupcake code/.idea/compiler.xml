@@ -6,17 +6,19 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="Projektskabelon-master" />
+        <module name="Cupcake" />
+        <module name="Cupcake code" />
         <module name="Projektskabelon" />
         <module name="ProjektSkabelon-master" />
-        <module name="Cupcake" />
         <module name="prejektSkabelon" />
+        <module name="Projektskabelon-master" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="Cupcake" options="-endorseddirs C:\Users\madsa\Desktop\Cupcake\target/endorsed" />
+      <module name="Cupcake code" options="-endorseddirs &quot;C:\Users\madsa\Desktop\Cupcake Projekt\Cupcake code\target/endorsed&quot;" />
       <module name="ProjektSkabelon-master" options="-endorseddirs &quot;$PROJECT_DIR$/target/endorsed&quot;" />
       <module name="Projektskabelon" options="-endorseddirs &quot;$PROJECT_DIR$/target/endorsed&quot;" />
       <module name="Projektskabelon-master" options="-endorseddirs $PROJECT_DIR$/target/endorsed" />
