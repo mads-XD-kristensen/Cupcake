@@ -35,16 +35,17 @@ DROP TABLE IF EXISTS `orders`;
 CREATE TABLE `orders`(
 `orderID` int not null auto_increment,
 `kundeID` int not null,
-`order` varchar not null,
+`order` varchar(15),
 `totalPrice` int not null,
 primary key (`orderID`),
-foreign key (`kundeID`) references "users"(`id`)
+foreign key (`kundeID`) references users(`id`)
 )ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `email` varchar(90) NOT NULL,
+  `telefon` int not null,
   `password` varchar(45) NOT NULL,
   `role` varchar(20) NOT NULL DEFAULT 'customer',
   `balance` int not null default '0',
@@ -53,9 +54,9 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 LOCK TABLES `users` WRITE;
-INSERT INTO `users` VALUES 
-(1,'jens@somewhere.com','jensen','customer', 50),
-(2,'ken@somewhere.com','kensen','customer'),
-(3,'robin@somewhere.com','batman','employee', 500);
+INSERT INTO `users` VALUES
+(1,'jens@somewhere.com',12345678,'jensen','customer', 50),
+(2,'ken@somewhere.com',87654321,'kensen','customer'),
+(3,'robin@somewhere.com',88888888,'batman','employee', 500);
 UNLOCK TABLES;
 
