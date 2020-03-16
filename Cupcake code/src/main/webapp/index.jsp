@@ -15,7 +15,7 @@
 </head>
 <body>
 <img src="images/">
-
+<a href="kurv.jsp"> Til kurv</a>
 
 </body>
 
