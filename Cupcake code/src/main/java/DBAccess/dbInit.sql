@@ -35,7 +35,7 @@ DROP TABLE IF EXISTS `orders`;
 CREATE TABLE `orders`(
 `orderID` int not null auto_increment,
 `kundeID` int not null,
-`order` varchar(15),
+`order` varchar(100),
 `totalPrice` int not null,
 primary key (`orderID`),
 foreign key (`kundeID`) references users(`id`)
