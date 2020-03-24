@@ -1,4 +1,6 @@
-<%@page contentType="text/html" pageEncoding="UTF-8" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="DBAccess.DataMapper" %>
 <html>
 <head>
 
@@ -9,7 +11,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-    
+
 </head>
 
 <body>
@@ -44,61 +46,43 @@
     <h2 style="margin-left: 15px">Her kan du bestille cupcakes</h2>
 </div>
 
-<div style="margin-left: 5px; margin-top: 10px;  " class="dropdown">
-    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-        Vælg bund
-    </button>
-    <div class="dropdown-menu">
-        <a class="dropdown-item" href="#">Chocolate</a>
-        <a class="dropdown-item" href="#">Vanilla</a>
-        <a class="dropdown-item" href="#">Nutmeg</a>
-        <a class="dropdown-item" href="#">Pistacio</a>
-        <a class="dropdown-item" href="#">Almond</a>
+<div style="margin-left: 5px; margin-top: 10px;  " class="dropdown"></div>
+
+<div class="form-group col-lg-2">
+    <select required class="form-control number-input" id="botMenu" name="bot">
+        <option value="" disabled selected>Vælg bund</option>
+        <c:forEach var="i" items="${DataMapper.collectBotting()}" varStatus="Count">
+            <option value="${Count.index +1}">
+                    ${i.getName()}
+            </option>
+        </c:forEach>
+    </select>
+</div>
+
+
+<div style="margin-left: 5px; margin-top: 10px;" class="dropdown2"></div>
+
+<div class="form-group col-lg-2">
+    <select required class="form-control number-input" id="topMenu" name="top">
+        <option value="" disabled selected>Vælg top</option>
+        <c:forEach var="i" items="${DataMapper.collectTopping()}" varStatus="Count">
+            <option value="${Count.index +1}">
+                    ${i.getName()}
+            </option>
+        </c:forEach>
+    </select>
+</div>
+
+<div class="col-lg-1">
+    <input class="form-control number-input" type="number" value="1" id="example-number-input" name="antal">
+</div>
+
+<form name="føjTilKurv" action="FrontController" method="post">
+    <input type="hidden" name="taget" value="føjTilKurv">
+
+    <div style="margin-left: 5px; margin-top: 10px;" class="btn1">
+        <input class="btn btn-primary" type="submit" value="Føj til kurven"> </input>
     </div>
-</div>
-
-
-<div style="margin-left: 5px; margin-top: 10px;" class="dropdown2">
-
-    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-        Vælg topping
-    </button>
-    <div class="dropdown-menu">
-        <a class="dropdown-item" href="#">Chocolate</a>
-        <a class="dropdown-item" href="#">Blueberry</a>
-        <a class="dropdown-item" href="#">Rasberry</a>
-        <a class="dropdown-item" href="#">Crispy</a>
-        <a class="dropdown-item" href="#">Strawberry</a>
-        <a class="dropdown-item" href="#">Rum/Raisin</a>
-        <a class="dropdown-item" href="#">Orange</a>
-        <a class="dropdown-item" href="#">Lemon</a>
-        <a class="dropdown-item" href="#">Blue cheese</a>
-    </div>
-</div>
-
-<div style="margin-left: 5px; margin-top: 10px;" class="dropdown3">
-
-    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-        Vælg antal
-    </button>
-    <div class="dropdown-menu">
-        <a class="dropdown-item" href="#">1</a>
-        <a class="dropdown-item" href="#">2</a>
-        <a class="dropdown-item" href="#">3</a>
-        <a class="dropdown-item" href="#">4</a>
-        <a class="dropdown-item" href="#">5</a>
-        <a class="dropdown-item" href="#">6</a>
-        <a class="dropdown-item" href="#">7</a>
-        <a class="dropdown-item" href="#">8</a>
-        <a class="dropdown-item" href="#">9</a>
-        <a class="dropdown-item" href="#">10</a>
-    </div>
-
-
-</div>
-<div style="margin-left: 5px; margin-top: 10px;" class="btn1">
-    <button type="button"> Føj til kurven</button>
-</div>
-
+</form>
 </body>
 </html>
