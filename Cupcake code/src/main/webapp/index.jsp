@@ -42,11 +42,15 @@
 </div>
 
 <div style="background-color: #c6c8d1; border-radius: 20px; width: auto; height: auto; margin-top: 50px">
-    <h1 style="margin-left: 15px">Velkommen til Olsker cupcakes</h1>
+    <h1 style="margin-left: 15px">Velkommen ${sessionScope.email} til Olsker cupcakes</h1>
     <h2 style="margin-left: 15px">Her kan du bestille cupcakes</h2>
 </div>
 
-<div style="margin-left: 5px; margin-top: 10px;  " class="dropdown"></div>
+
+<%-- todo man kan ikke lægge noget i kurv   --%>
+
+<form name="føjTilKurv" action="FrontController" method="post">
+    <input type="hidden" name="taget" value="føjTilKurv">
 
 <div class="form-group col-lg-2">
     <select required class="form-control number-input" id="botMenu" name="bot">
@@ -60,7 +64,7 @@
 </div>
 
 
-<div style="margin-left: 5px; margin-top: 10px;" class="dropdown2"></div>
+
 
 <div class="form-group col-lg-2">
     <select required class="form-control number-input" id="topMenu" name="top">
@@ -77,8 +81,7 @@
     <input class="form-control number-input" type="number" value="1" id="example-number-input" name="antal">
 </div>
 
-<form name="føjTilKurv" action="FrontController" method="post">
-    <input type="hidden" name="taget" value="føjTilKurv">
+
 
     <div style="margin-left: 5px; margin-top: 10px;" class="btn1">
         <input class="btn btn-primary" type="submit" value="Føj til kurven"> </input>

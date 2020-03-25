@@ -41,7 +41,7 @@ public class AddKurv extends Command {
                 session.setAttribute("kurv", kurv);
                 antalCupcakes += antal;
 
-                return "../index";
+                return "../" + "Cupcake_code_war";
             }
         }
         kurv.add(tempCupcake);
@@ -49,7 +49,7 @@ public class AddKurv extends Command {
         session.setAttribute("kurv", kurv);
         antalCupcakes += antal;
 
-        return "../index";
+        return "../" + "Cupcake_code_war";
     }
 }
 
