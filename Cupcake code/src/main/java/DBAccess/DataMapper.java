@@ -27,8 +27,8 @@ public class DataMapper {
 
                 int id = rs.getInt("id");
                 String name = rs.getString("navn");
-                Double price = rs.getDouble("pris");
-                Top top = new Top(id, name, price);
+                double pris = rs.getDouble("pris");
+                Top top = new Top(id, name, pris);
                 topFill.add(top);
             }
 
@@ -63,35 +63,44 @@ public class DataMapper {
         }
     }
 
-// usecase 6
- /*   public static ArrayList<Order> GetAllOrders() throws LoginSampleException {
+
+    public static ArrayList<Order> ListeAfOrdre() throws LoginSampleException {
         try {
             Connection con = Connector.connection();
-            String SQL = "SELECT ordrer.id, users.email, topings.name as top, bottom.name as bottom, ordrer.pris " +
-                    "From((((ordrer " +
-                    "Inner join users on ordrer.user_id=users.id) " +
-                    "inner join cupcakes on cupcakes.order_id=ordrer.id) " +
-                    "inner join topings on Cupcakes.top_id=topings.id) " +
-                    "inner join bottom on Cupcakes.bottom_id=bottom.id)";
+
+            String SQL = "SELECT ordre.id, users.email, top.navn as top, bot.navn as bot, ordre.pris " +
+                    "from((((ordre " +
+                    "Inner join users on ordre.userid=users.id) " +
+                    "inner join cupcake on cupcake.orderid=ordre.id) " +
+                    "inner join top on cupcake.topid=top.id) " +
+                    "inner join bot on cupcake.botid=bot.id)";
+
             PreparedStatement preparedStatement = con.prepareStatement(SQL);
             ResultSet rs = preparedStatement.executeQuery();
-            ArrayList<Order> orders = new ArrayList<>();
+
+            ArrayList<Order> ordreList = new ArrayList<>();
+
             while (rs.next()) {
                 int id = rs.getInt("id");
                 String email = rs.getString("email");
+
                 String top = rs.getString("top");
-                String bottom = rs.getString("bot");
+                String bot = rs.getString("bot");
                 int total = rs.getInt("pris");
-                Order order = new Order(id, email, top, bottom, total);
-                orders.add(order);
+
+                Order order = new Order(top, bot, total);
+
+                ordreList.add(order);
             }
-            return orders;
+
+            return ordreList;
+
         } catch (SQLException | ClassNotFoundException ex) {
             throw new LoginSampleException(ex.getMessage());
 
 
         }
-    }*/
+    }
 
 }
 

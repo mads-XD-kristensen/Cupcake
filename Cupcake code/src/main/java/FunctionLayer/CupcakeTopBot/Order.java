@@ -1,29 +1,29 @@
 package FunctionLayer.CupcakeTopBot;
 
 public class Order {
-    private int top;
-    private int bot;
+    private String top;
+    private String bot;
     private int antal;
 
-    public Order(int top, int bot, int antal) {
+    public Order(String top, String bot, int antal) {
         this.top = top;
         this.bot = bot;
         this.antal = antal;
     }
 
-    public int getTop() {
+    public String getTop() {
         return top;
     }
 
-    public void setTop(int top) {
+    public void setTop(String top) {
         this.top = top;
     }
 
-    public int getBot() {
+    public String getBot() {
         return bot;
     }
 
-    public void setBot(int bot) {
+    public void setBot(String bot) {
         this.bot = bot;
     }
 

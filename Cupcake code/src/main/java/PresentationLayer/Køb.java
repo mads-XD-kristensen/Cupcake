@@ -21,7 +21,7 @@ public class Køb extends Command {
         double saldo = (Double) (session.getAttribute("money"));
         int userId = (int) session.getAttribute("userId");
 
-        ArrayList<Order> kurv = (ArrayList<Order>) session.getAttribute("kurv");
+        ArrayList<Order> kurv = (ArrayList<Order>) session.getAttribute("basket");
 
         if (role == null) {
             return "opretLoginBruger";

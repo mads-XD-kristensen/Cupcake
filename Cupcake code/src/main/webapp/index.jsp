@@ -4,7 +4,7 @@
 <html>
 <head>
 
-    <title>Olster cupcakes</title>
+    <title>Olsker cupcakes</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
@@ -38,8 +38,15 @@
                    style="border: 0; width: 40px; height: 40px; alignment: right; margin-right: 15px;">
         </form>
 
+        <form action="FrontController" method="post" style="float: left; clear: right; margin-right: 15px;">
+            <input type="hidden" name="taget" value="admin">
+            <input type="submit" value="admin">
+        </form>
+        ${sessionScope.email}
+
     </div>
 </div>
+
 
 <div style="background-color: #c6c8d1; border-radius: 20px; width: auto; height: auto; margin-top: 50px">
     <h1 style="margin-left: 15px">Velkommen ${sessionScope.email} til Olsker cupcakes</h1>
@@ -51,17 +58,6 @@
 
 <form name="føjTilKurv" action="FrontController" method="post">
     <input type="hidden" name="taget" value="føjTilKurv">
-
-<div class="form-group col-lg-2">
-    <select required class="form-control number-input" id="botMenu" name="bot">
-        <option value="" disabled selected>Vælg bund</option>
-        <c:forEach var="i" items="${DataMapper.collectBotting()}" varStatus="Count">
-            <option value="${Count.index +1}">
-                    ${i.getName()}
-            </option>
-        </c:forEach>
-    </select>
-</div>
 
 
 
@@ -77,14 +73,24 @@
     </select>
 </div>
 
+    <div class="form-group col-lg-2">
+        <select required class="form-control number-input" id="botMenu" name="bot">
+            <option value="" disabled selected>Vælg bund</option>
+            <c:forEach var="i" items="${DataMapper.collectBotting()}" varStatus="Count">
+                <option value="${Count.index +1}">
+                        ${i.getName()}
+                </option>
+            </c:forEach>
+        </select>
+    </div>
+
 <div class="col-lg-1">
     <input class="form-control number-input" type="number" value="1" id="example-number-input" name="antal">
 </div>
 
 
-
-    <div style="margin-left: 5px; margin-top: 10px;" class="btn1">
-        <input class="btn btn-primary" type="submit" value="Føj til kurven"> </input>
+    <div>
+        <input class="btn btn-primary" type="submit" value="Føj til kurven">
     </div>
 </form>
 </body>

@@ -16,40 +16,43 @@ public class AddKurv extends Command {
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
 
-        int top = Integer.parseInt(request.getParameter("top"));
-        int bot = Integer.parseInt(request.getParameter("bot"));
-        int antal = Integer.parseInt(request.getParameter("antal"));
-
         HttpSession session = request.getSession();
 
-        ArrayList<Order> kurv;
-        if (session.getAttribute("kurv") != null) {
+        String top = (request.getParameter("top"));
+        session.setAttribute("top", top);
 
-            kurv = (ArrayList<Order>) session.getAttribute("kurv");
+        String bot = (request.getParameter("bot"));
+        session.setAttribute("bot", bot);
+
+        int antal = Integer.parseInt(request.getParameter("antal"));
+        session.setAttribute("antal",antal);
+
+
+
+        ArrayList<Order> kurv;
+        if (session.getAttribute("basket") != null) {
+
+            kurv =  (ArrayList<Order>) session.getAttribute("basket");
 
         } else {
 
             kurv = new ArrayList<>();
 
         }
-        Order tempCupcake = new Order(top, bot, antal);
 
-        for (Order order : kurv) {
 
-            if (order.getBot() == tempCupcake.getBot() && order.getTop() == tempCupcake.getTop()) {
-                order.setAntal(order.getAntal() + tempCupcake.getAntal());
-                session.setAttribute("kurv", kurv);
-                antalCupcakes += antal;
+        String topping = request.getParameter("top");
+        String botting = request.getParameter("bot");
 
-                return "../" + "Cupcake_code_war";
-            }
-        }
-        kurv.add(tempCupcake);
 
-        session.setAttribute("kurv", kurv);
+        Order cupcake = new Order(topping, botting, antal);
+
+        kurv.add(cupcake);
+
+        session.setAttribute("basket", kurv);
         antalCupcakes += antal;
 
-        return "../" + "Cupcake_code_war";
+        return "../index";
     }
 }
 

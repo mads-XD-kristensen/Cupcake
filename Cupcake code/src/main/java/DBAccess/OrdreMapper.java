@@ -35,14 +35,14 @@ public class OrdreMapper {
         }
     }
 
-    public static void createOrdreList(int orderId, int top, int bottom, int antal) throws LoginSampleException {
+    public static void createOrdreList(int orderId, String top, String bottom, int antal) throws LoginSampleException {
         try {
             Connection con = Connector.connection();
             String SQL = "insert into cupcake Values(?,?,?,?);";
             PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, orderId);
-            ps.setInt(2, top);
-            ps.setInt(3, bottom);
+            ps.setString(2, top);
+            ps.setString(3, bottom);
             ps.setInt(4, antal);
             ps.executeUpdate();
         } catch (SQLException | ClassNotFoundException ex) {

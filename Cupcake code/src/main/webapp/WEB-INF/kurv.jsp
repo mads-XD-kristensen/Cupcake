@@ -36,7 +36,10 @@
         </tr>
         </thead>
         <tbody>
-        <c:forEach var="i" items="${sessionScope.kurv} " varStatus="count">
+
+        <%-- todo Giver en fejl når man prøver at tilgå fra hjemmesiden --%>
+
+        <c:forEach var="i" items="${sessionScope.basket} " varStatus="count">
             <tr>
                 <th scope="row">${count.index}</th>
                 <td>${DataMapper.collectTopping().get(i.top).name}</td>
@@ -47,14 +50,7 @@
 
                         ${(DataMapper.collectTopping().get(i.top).price() + DataMapper.collectBotting().get(i.bot).price()) * i.antal}
                 </td>
-                    <%-- todo fjerner en ordrer usecase 7
-                    <td>
-                        <form action="FrontController" method="post">
-                            <input type="hidden" name="taget" value="removeItem">
-                            <input type="hidden" name="index" value="${Count.index}">
-                            <button class="button kurv" type="submit">Slet</button>
-                        </form>
-                    </td> --%>
+
             </tr>
 
         </c:forEach>
@@ -64,7 +60,7 @@
             <th></th>
             <th></th>
             <th>
-                <c:forEach var="i" items="${sessionScope.kurv}" varStatus="Count">
+                <c:forEach var="i" items="${sessionScope.basket}" varStatus="Count">
 
                     ${UdregnBeløb.beløbIAlt(DataMapper.collectTopping().get(i.top).price(), DataMapper.collectBotting().get(i.bot).price(), i.antal)}
                 </c:forEach>
@@ -81,7 +77,7 @@
 
     <form action="FrontController" method="post">
         <input type="hidden" name="taget" value="køb">
-        <c:forEach var="i" items="${sessionScope.kurv}" varStatus="count">
+        <c:forEach var="i" items="${sessionScope.basket}" varStatus="count">
 
             ${UdregnBeløb.beløbIAlt(DataMapper.collectTopping().get(i.top).price(), DataMapper.collectBotting().get(i.bot).price(), i.antal)}
         </c:forEach>
