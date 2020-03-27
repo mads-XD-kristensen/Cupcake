@@ -56,9 +56,8 @@
 
 <%-- todo man kan ikke lægge noget i kurv   --%>
 
-<form name="føjTilKurv" action="FrontController" method="post">
-    <input type="hidden" name="taget" value="føjTilKurv">
-
+<form action="FrontController" method="post">
+    <input type="hidden" name="command" value="føjTilKurv">
 
 
 
@@ -90,7 +89,7 @@
 
 
     <div>
-        <input class="btn btn-primary" type="submit" value="Føj til kurven">
+        <button class="btn btn-primary" type="submit" value="Føj til kurven">Føj til kurven</button>
     </div>
 </form>
 </body>
