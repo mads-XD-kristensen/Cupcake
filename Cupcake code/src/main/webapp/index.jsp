@@ -15,37 +15,8 @@
 </head>
 
 <body>
-<div style="width: 100%; height: auto;"><img style="width: 100%; height: auto;" src="images/olskercupcakes.png"></div>
-<div>
-    <div style="background-color: #c6c8d1; width: 100%; height: 50px; margin-top: 10px">
+<%@include file="includes/header.inc" %>
 
-        <form action="FrontController" method="post"
-              style="margin-right: 15px; margin-left: 15px; float: left; clear: right;">
-            <input type="hidden" name="taget" value="ordrer">
-            <input type="submit" value="Ordrer">
-        </form>
-        <form action="FrontController" method="post" style="float: left; clear: right; margin-right: 15px;">
-            <input type="hidden" name="taget" value="kunder">
-            <input type="submit" value="Kunder">
-        </form>
-        <form action="FrontController" method="post" style="float: left; clear: right; margin-right: 15px;">
-            <input type="hidden" name="taget" value="opretlogin">
-            <input type="submit" value="Opret/Login">
-        </form>
-        <form action="FrontController" method="post" style="float: left; clear: right; margin-right: 15px;">
-            <input type="hidden" name="taget" value="kurv">
-            <input type="image" src="images/basket.png"
-                   style="border: 0; width: 40px; height: 40px; alignment: right; margin-right: 15px;">
-        </form>
-
-        <form action="FrontController" method="post" style="float: left; clear: right; margin-right: 15px;">
-            <input type="hidden" name="taget" value="admin">
-            <input type="submit" value="admin">
-        </form>
-        ${sessionScope.email}
-
-    </div>
-</div>
 
 
 <div style="background-color: #c6c8d1; border-radius: 20px; width: auto; height: auto; margin-top: 50px">
@@ -54,23 +25,21 @@
 </div>
 
 
-<%-- todo man kan ikke lægge noget i kurv   --%>
 
 <form action="FrontController" method="post">
-    <input type="hidden" name="command" value="føjTilKurv">
+    <input type="hidden" name="taget" value="addToBasket">
 
 
-
-<div class="form-group col-lg-2">
-    <select required class="form-control number-input" id="topMenu" name="top">
-        <option value="" disabled selected>Vælg top</option>
-        <c:forEach var="i" items="${DataMapper.collectTopping()}" varStatus="Count">
-            <option value="${Count.index +1}">
-                    ${i.getName()}
-            </option>
-        </c:forEach>
-    </select>
-</div>
+    <div class="form-group col-lg-2">
+        <select required class="form-control number-input" id="topMenu" name="top">
+            <option value="" disabled selected>Vælg top</option>
+            <c:forEach var="i" items="${DataMapper.collectTopping()}" varStatus="Count">
+                <option value="${Count.index +1}">
+                        ${i.getName()}
+                </option>
+            </c:forEach>
+        </select>
+    </div>
 
     <div class="form-group col-lg-2">
         <select required class="form-control number-input" id="botMenu" name="bot">
@@ -83,14 +52,17 @@
         </select>
     </div>
 
-<div class="col-lg-1">
-    <input class="form-control number-input" type="number" value="1" id="example-number-input" name="antal">
-</div>
+    <div class="col-lg-1">
+        <input class="form-control number-input" type="number" value="1" id="example-number-input" name="antal">
+    </div>
 
 
     <div>
-        <button class="btn btn-primary" type="submit" value="Føj til kurven">Føj til kurven</button>
+        <button class="btn btn-primary" type="submit" value="Submit">Føj til kurven</button>
     </div>
+
+
+    ${sessionScope.basket}
 </form>
 </body>
 </html>

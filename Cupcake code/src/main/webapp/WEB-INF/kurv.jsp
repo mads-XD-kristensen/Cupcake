@@ -18,6 +18,7 @@
 </head>
 
 <body>
+
 <div style="background-color: #c6c8d1; border-radius: 20px; width: auto; height: auto; margin-top: 50px">
     <h1 style="margin-left: 15px">Velkommen til Olsker cupcakes</h1>
     <h2 style="margin-left: 15px">Her kan du se din kurv</h2>
@@ -42,8 +43,8 @@
         <c:forEach var="i" items="${sessionScope.basket} " varStatus="count">
             <tr>
                 <th scope="row">${count.index}</th>
-                <td>${DataMapper.collectTopping().get(i.top).name}</td>
-                <td>${DataMapper.collectBotting().get(i.bot).name()}</td>
+                <td>${DataMapper.collectTopping().get(i.top).getName}</td>
+                <td>${DataMapper.collectBotting().get(i.bot).getName()}</td>
                 <td><input class="form-control number-input" type="number" value="${i.antal}"
                            id="example-number-input" name="number"></td>
                 <td>

@@ -18,7 +18,7 @@ abstract class Command {
         commands.put("kunder", new Kunder());
         commands.put("kurv", new Kurv());
         commands.put("opretlogin", new OpretLoginBruger());
-        commands.put("føjTilKurv", new AddKurv());
+        commands.put("addToBasket", new AddKurv());
         commands.put("admin", new Admin());
 
 

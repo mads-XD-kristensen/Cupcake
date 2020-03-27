@@ -24,7 +24,7 @@
     </style>
 </head>
 <body>
-<div><img src="images/olskercupcakes.png" class="pic"></div>
+<%@include file="includes/header.inc"%>
 
 
 <div style="background-color: #c6c8d1; border-radius: 20px; width: auto; height: auto"><br>

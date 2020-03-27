@@ -1,7 +1,7 @@
 package PresentationLayer;
 
 import DBAccess.DataMapper;
-import FunctionLayer.CupcakeTopBot.Order;
+import FunctionLayer.CupcakeTopBot.order;
 import FunctionLayer.LoginSampleException;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,7 +13,7 @@ public class OrdreListe extends Command{
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
 
-        List<Order> alleOrdre = DataMapper.ListeAfOrdre();
+        List<order> alleOrdre = DataMapper.ListeAfOrdre();
 
         HttpSession session = request.getSession();
         session.setAttribute("liste", alleOrdre);

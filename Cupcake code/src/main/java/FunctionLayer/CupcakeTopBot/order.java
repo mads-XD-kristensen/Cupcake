@@ -1,11 +1,11 @@
 package FunctionLayer.CupcakeTopBot;
 
-public class Order {
+public class order {
     private String top;
     private String bot;
     private int antal;
 
-    public Order(String top, String bot, int antal) {
+    public order(String top, String bot, int antal) {
         this.top = top;
         this.bot = bot;
         this.antal = antal;

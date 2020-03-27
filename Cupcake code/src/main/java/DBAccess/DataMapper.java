@@ -1,10 +1,9 @@
 package DBAccess;
 
 import FunctionLayer.CupcakeTopBot.Bot;
-import FunctionLayer.CupcakeTopBot.Order;
+import FunctionLayer.CupcakeTopBot.order;
 import FunctionLayer.CupcakeTopBot.Top;
 import FunctionLayer.LoginSampleException;
-import FunctionLayer.User;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -64,7 +63,7 @@ public class DataMapper {
     }
 
 
-    public static ArrayList<Order> ListeAfOrdre() throws LoginSampleException {
+    public static ArrayList<order> ListeAfOrdre() throws LoginSampleException {
         try {
             Connection con = Connector.connection();
 
@@ -78,7 +77,7 @@ public class DataMapper {
             PreparedStatement preparedStatement = con.prepareStatement(SQL);
             ResultSet rs = preparedStatement.executeQuery();
 
-            ArrayList<Order> ordreList = new ArrayList<>();
+            ArrayList<order> ordreList = new ArrayList<>();
 
             while (rs.next()) {
                 int id = rs.getInt("id");
@@ -88,7 +87,7 @@ public class DataMapper {
                 String bot = rs.getString("bot");
                 int total = rs.getInt("pris");
 
-                Order order = new Order(top, bot, total);
+                order order = new order(top, bot, total);
 
                 ordreList.add(order);
             }

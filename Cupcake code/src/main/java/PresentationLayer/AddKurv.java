@@ -1,7 +1,7 @@
 package PresentationLayer;
 
 
-import FunctionLayer.CupcakeTopBot.Order;
+import FunctionLayer.CupcakeTopBot.order;
 import FunctionLayer.LoginSampleException;
 
 import javax.servlet.http.HttpServletRequest;
@@ -27,10 +27,11 @@ public class AddKurv extends Command {
         //session.setAttribute("antal",antal);
 
 
-        ArrayList<Order> kurv;
+        // todo det her virker
+        ArrayList<order> kurv;
         kurv = new ArrayList<>();
 
-        Order cupcake = new Order(top, bot, antal);
+        order cupcake = new order(top, bot, antal);
 
         kurv.add(cupcake);
 
@@ -38,7 +39,24 @@ public class AddKurv extends Command {
 
 
 
-        return "./index";
+        return "../index";
+
+//todo det her virker også
+/*
+        if ((ArrayList<order>) session.getAttribute("basket") == null) {
+            ArrayList<order> basket = new ArrayList<>();
+            session.setAttribute("basket", basket);
+
+        }
+
+        order cupcake = new order(top, bot, antal);
+
+        ((ArrayList<order>) session.getAttribute("basket")).add(cupcake);
+
+
+
+        return "../index";  */
+
     }
 
 
