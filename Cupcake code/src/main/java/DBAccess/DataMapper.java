@@ -25,7 +25,7 @@ public class DataMapper {
                 int id = rs.getInt("id");
                 String name = rs.getString("navn");
                 double pris = rs.getDouble("pris");
-                Top top = new Top( name,pris);
+                Top top = new Top(name, pris);
                 top.setId(id);
                 topFill.add(top);
             }
@@ -48,7 +48,7 @@ public class DataMapper {
                 int id = rs.getInt("id");
                 String name = rs.getString("navn");
                 Double price = rs.getDouble("pris");
-                Bot bot = new Bot( name, price);
+                Bot bot = new Bot(name, price);
                 bot.setId(id);
                 botFill.add(bot);
             }
@@ -85,6 +85,48 @@ public class DataMapper {
                 ordreList.add(order);
             }
             return ordreList;
+
+        } catch (SQLException | ClassNotFoundException ex) {
+            throw new LoginSampleException(ex.getMessage());
+        }
+    }
+
+    public static String listTop(int index) throws LoginSampleException {
+        ArrayList<String> toppen = new ArrayList<>();
+        String top = "";
+        try {
+            Connection con = Connector.connection();
+            String SQL = "SELECT navn FROM cupcake.top";
+            PreparedStatement ps = con.prepareStatement(SQL);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                String name = rs.getString("navn");
+                toppen.add(name);
+            }
+            top = toppen.get(index);
+            return top;
+
+        } catch (SQLException | ClassNotFoundException ex) {
+            throw new LoginSampleException(ex.getMessage());
+        }
+    }
+
+    public static String listBot(int index) throws LoginSampleException {
+        ArrayList<String> bund = new ArrayList<>();
+        String bot = "";
+        try {
+            Connection con = Connector.connection();
+            String SQL = "SELECT navn FROM cupcake.bot";
+            PreparedStatement ps = con.prepareStatement(SQL);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                String name = rs.getString("navn");
+                bund.add(name);
+            }
+            bot = bund.get(index);
+            return bot;
 
         } catch (SQLException | ClassNotFoundException ex) {
             throw new LoginSampleException(ex.getMessage());

@@ -3,6 +3,7 @@
 <%@ page import="FunctionLayer.CupcakeTopBot.order" %>
 <%@ page import="FunctionLayer.CupcakeTopBot.Bot" %>
 <%@ page import="FunctionLayer.CupcakeTopBot.Top" %>
+<%@ page import="PresentationLayer.AddKurv" %>
 <%@ page import="PresentationLayer.UdregnBeloeb" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
@@ -40,17 +41,17 @@
         </tr>
         </thead>
         <tbody>
-
-        <c:forEach var="element" items="${sessionScope.basket} " varStatus="count">
+<%-- todo gøre så at man kan få topping, bund, antal og en pris frem på en linje --%>
+        <c:forEach items="${sessionScope.basket} " varStatus="count">
             <tr>
                 <th>${count.index+1}</th>
-                <th>${DataMapper.collectTopping().get(element.top)}</th>
-                <th></th>
+                <th>${DataMapper.listTop(count.index)}</th>
+                <th>${DataMapper.listBot(count.index)}</th>
                 <th></th>
                 <th></th>
             </tr>
         </c:forEach>
-
+<%-- todo gøre så der kommer en samlet pris --%>
         <tr>
             <th>IALT:</th>
             <th>
@@ -62,7 +63,7 @@
         </tbody>
     </table>
 </div>
-
+<%-- todo gøre så at når man trykker på køb så bliver ordren sent til databasen og penge bliver trukket fra brugeren --%>
 <div class="col-lg-6>">
     <form action="FrontController" method="post">
         <input type="hidden" name="taget" value="koeb">
