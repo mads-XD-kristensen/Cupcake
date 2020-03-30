@@ -26,6 +26,7 @@ public class UserMapper {
             ids.next();
             int id = ids.getInt(1);
             user.setId(id);
+
         } catch (SQLException | ClassNotFoundException ex) {
             throw new LoginSampleException(ex.getMessage());
         }

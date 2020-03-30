@@ -27,7 +27,7 @@ public class AddKurv extends Command {
         //session.setAttribute("antal",antal);
 
 
-        // todo det her virker
+        // det her virker
         ArrayList<order> kurv;
         kurv = new ArrayList<>();
 
@@ -41,7 +41,7 @@ public class AddKurv extends Command {
 
         return "../index";
 
-//todo det her virker også
+// det her virker også
 /*
         if ((ArrayList<order>) session.getAttribute("basket") == null) {
             ArrayList<order> basket = new ArrayList<>();
