@@ -18,7 +18,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="Cupcake" options="-endorseddirs C:\Users\madsa\Desktop\Cupcake\target/endorsed" />
-      <module name="Cupcake code" options="-endorseddirs &quot;C:\Users\magil\Desktop\Cupcakemappe\Cupcake\Cupcake code\target/endorsed&quot;" />
+      <module name="Cupcake code" options="-endorseddirs &quot;C:\Users\madsa\Desktop\Cupcake Projekt\Cupcake code\target/endorsed&quot;" />
       <module name="ProjektSkabelon-master" options="-endorseddirs &quot;C:/madsa/Desktop/Cupcake Projekt/Cupcake code/target/endorsed&quot;" />
       <module name="Projektskabelon" options="-endorseddirs &quot;C:/madsa/Desktop/Cupcake Projekt/Cupcake code/target/endorsed&quot;" />
       <module name="Projektskabelon-master" options="-endorseddirs C:/madsa/Desktop/Cupcake Projekt/Cupcake code/target/endorsed" />
