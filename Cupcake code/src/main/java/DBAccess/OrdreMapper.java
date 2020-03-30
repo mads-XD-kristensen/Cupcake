@@ -1,13 +1,14 @@
 package DBAccess;
 
 
-
 import java.sql.*;
+
 import FunctionLayer.LoginSampleException;
 import FunctionLayer.User;
 import FunctionLayer.LoginSampleException;
 import FunctionLayer.User;
 import FunctionLayer.User;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -16,7 +17,6 @@ import java.sql.Statement;
 
 
 public class OrdreMapper {
-
 
     public static int createOrdre(int userID, double pris) throws LoginSampleException {
         try {
@@ -30,6 +30,7 @@ public class OrdreMapper {
             ids.next();
             int id = ids.getInt(1);
             return id;
+
         } catch (SQLException | ClassNotFoundException ex) {
             throw new LoginSampleException(ex.getMessage());
         }
@@ -45,6 +46,7 @@ public class OrdreMapper {
             ps.setString(3, bottom);
             ps.setInt(4, antal);
             ps.executeUpdate();
+
         } catch (SQLException | ClassNotFoundException ex) {
             System.out.println(ex);
         }
@@ -58,11 +60,9 @@ public class OrdreMapper {
             ps.setDouble(1, nySaldo);
             ps.setInt(2, userId);
             ps.executeUpdate();
+
         } catch (SQLException | ClassNotFoundException ex) {
             System.out.println(ex);
         }
     }
-
-
-
 }

@@ -20,7 +20,8 @@ abstract class Command {
         commands.put("opretlogin", new OpretLoginBruger());
         commands.put("addToBasket", new AddKurv());
         commands.put("admin", new Admin());
-
+        commands.put("addSaldo", new addSaldo());
+        commands.put("koeb", new Koeb());
 
     }
 

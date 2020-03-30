@@ -14,23 +14,21 @@ import java.util.ArrayList;
 public class DataMapper {
 
     public static ArrayList<Top> collectTopping() throws LoginSampleException {
+        ArrayList<Top> topFill = new ArrayList<>();
         try {
-
-            ArrayList<Top> topFill = new ArrayList<>();
             Connection con = Connector.connection();
-            String SQL = "SELECT * FROM cupcake.top ";
+            String SQL = "SELECT * FROM cupcake.top";
             PreparedStatement ps = con.prepareStatement(SQL);
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
-
                 int id = rs.getInt("id");
                 String name = rs.getString("navn");
                 double pris = rs.getDouble("pris");
-                Top top = new Top(id, name, pris);
+                Top top = new Top( name,pris);
+                top.setId(id);
                 topFill.add(top);
             }
-
             return topFill;
 
         } catch (SQLException | ClassNotFoundException ex) {
@@ -39,20 +37,19 @@ public class DataMapper {
     }
 
     public static ArrayList<Bot> collectBotting() throws LoginSampleException {
+        ArrayList<Bot> botFill = new ArrayList<>();
         try {
-
-            ArrayList<Bot> botFill = new ArrayList<>();
             Connection con = Connector.connection();
             String SQL = "SELECT * FROM cupcake.bot ";
             PreparedStatement preparedStatement = con.prepareStatement(SQL);
             ResultSet rs = preparedStatement.executeQuery();
 
             while (rs.next()) {
-
                 int id = rs.getInt("id");
                 String name = rs.getString("navn");
                 Double price = rs.getDouble("pris");
-                Bot bot = new Bot(id, name, price);
+                Bot bot = new Bot( name, price);
+                bot.setId(id);
                 botFill.add(bot);
             }
             return botFill;
@@ -66,7 +63,6 @@ public class DataMapper {
     public static ArrayList<order> ListeAfOrdre() throws LoginSampleException {
         try {
             Connection con = Connector.connection();
-
             String SQL = "SELECT ordre.id, users.email, top.navn as top, bot.navn as bot, ordre.pris " +
                     "from((((ordre " +
                     "Inner join users on ordre.userid=users.id) " +
@@ -82,25 +78,18 @@ public class DataMapper {
             while (rs.next()) {
                 int id = rs.getInt("id");
                 String email = rs.getString("email");
-
                 String top = rs.getString("top");
                 String bot = rs.getString("bot");
                 int total = rs.getInt("pris");
-
                 order order = new order(top, bot, total);
-
                 ordreList.add(order);
             }
-
             return ordreList;
 
         } catch (SQLException | ClassNotFoundException ex) {
             throw new LoginSampleException(ex.getMessage());
-
-
         }
     }
-
 }
 
 

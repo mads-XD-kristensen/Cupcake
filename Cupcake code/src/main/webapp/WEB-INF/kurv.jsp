@@ -1,6 +1,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="DBAccess.DataMapper" %>
-<%@ page import="PresentationLayer.UdregnBeløb" %>
+<%@ page import="FunctionLayer.CupcakeTopBot.order" %>
+<%@ page import="FunctionLayer.CupcakeTopBot.Bot" %>
+<%@ page import="FunctionLayer.CupcakeTopBot.Top" %>
+<%@ page import="PresentationLayer.UdregnBeloeb" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -18,7 +21,7 @@
 </head>
 
 <body>
-<%@include file="../includes/header.inc"%>
+<%@include file="../includes/header.inc" %>
 <div style="background-color: #c6c8d1; border-radius: 20px; width: auto; height: auto; margin-top: 50px">
     <h1 style="margin-left: 15px">Velkommen til Olsker cupcakes</h1>
     <h2 style="margin-left: 15px">Her kan du se din kurv</h2>
@@ -38,61 +41,37 @@
         </thead>
         <tbody>
 
-        <%-- todo Giver en fejl når man prøver at tilgå fra hjemmesiden --%>
-
-        <c:forEach var="i" items="${sessionScope.basket} " varStatus="count">
+        <c:forEach var="element" items="${sessionScope.basket} " varStatus="count">
             <tr>
-                <th scope="row">${count.index}</th>
-                <td>${DataMapper.collectTopping().get(i.top).getName}</td>
-                <td>${DataMapper.collectBotting().get(i.bot).getName()}</td>
-                <td><input class="form-control number-input" type="number" value="${i.antal}"
-                           id="example-number-input" name="number"></td>
-                <td>
-
-                        ${(DataMapper.collectTopping().get(i.top).price() + DataMapper.collectBotting().get(i.bot).price()) * i.antal}
-                </td>
-
+                <th>${count.index+1}</th>
+                <th>${DataMapper.collectTopping().get(element.top)}</th>
+                <th></th>
+                <th></th>
+                <th></th>
             </tr>
-
         </c:forEach>
-        <tr>
-            <th>I ALT:</th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th>
-                <c:forEach var="i" items="${sessionScope.basket}" varStatus="Count">
 
-                    ${UdregnBeløb.beløbIAlt(DataMapper.collectTopping().get(i.top).price(), DataMapper.collectBotting().get(i.bot).price(), i.antal)}
+        <tr>
+            <th>IALT:</th>
+            <th>
+                <c:forEach items="${sessionScope.basket}" varStatus="Count">
+
                 </c:forEach>
-                ${UdregnBeløb.beløb()}
             </th>
-            <th></th>
         </tr>
         </tbody>
-
     </table>
 </div>
-<div class="col-lg-3"></div>
+
 <div class="col-lg-6>">
-
     <form action="FrontController" method="post">
-        <input type="hidden" name="taget" value="køb">
-        <c:forEach var="i" items="${sessionScope.basket}" varStatus="count">
-
-            ${UdregnBeløb.beløbIAlt(DataMapper.collectTopping().get(i.top).price(), DataMapper.collectBotting().get(i.bot).price(), i.antal)}
-        </c:forEach>
-        <input type="hidden" name="price" value="${UdregnBeløb.beløb()}">
+        <input type="hidden" name="taget" value="koeb">
         <div class="text-center">
             <button class="btn btn-success " type="submit">Køb</button>
         </div>
     </form>
 </div>
-<div class="col-lg-3"></div>
-
 </body>
-
-
 </html>
 
 

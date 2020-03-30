@@ -12,6 +12,12 @@ public class User {
         this.role = role;
         this.saldo = saldo;
     }
+    public User( String email, String password, String role, int saldo) {
+        this.email = email;
+        this.password = password;
+        this.role = role;
+        this.saldo = saldo;
+    }
 
     private int id; // just used to demo retrieval of autogen keys in UserMapper
     private String email;
@@ -55,4 +61,7 @@ public class User {
         return saldo;
     }
 
+    public void setSaldo(int saldo) {
+        this.saldo = saldo;
+    }
 }

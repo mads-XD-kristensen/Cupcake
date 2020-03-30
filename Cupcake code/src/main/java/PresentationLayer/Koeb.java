@@ -14,11 +14,9 @@ public class Koeb extends Command {
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
         HttpSession session = request.getSession();
 
-        // ved ikke om role er nødvendig
         String role = (String) session.getAttribute("role");
-
         double pris = Double.parseDouble(request.getParameter("price"));
-        double saldo = (Double) (session.getAttribute("money"));
+        double saldo = (Double) (session.getAttribute("saldo"));
         int userId = (int) session.getAttribute("userId");
 
         ArrayList<order> kurv = (ArrayList<order>) session.getAttribute("basket");
@@ -37,6 +35,5 @@ public class Koeb extends Command {
         }
         return "../index";
     }
-
 }
 

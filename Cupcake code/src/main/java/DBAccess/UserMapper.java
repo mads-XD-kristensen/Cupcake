@@ -43,10 +43,11 @@ public class UserMapper {
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 String role = rs.getString("role");
-
+                int saldo = rs.getInt("saldo");
                 int id = rs.getInt("id");
                 User user = new User(email, password, role);
                 user.setId(id);
+                user.setSaldo(saldo);
                 return user;
             } else {
                 throw new LoginSampleException("Could not validate user");
