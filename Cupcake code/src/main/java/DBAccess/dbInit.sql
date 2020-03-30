@@ -4,7 +4,7 @@
 
 CREATE DATABASE  IF NOT EXISTS `cupcake`;
 USE `cupcake`;
-
+SET GLOBAL time_zone = '+1:00';
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,

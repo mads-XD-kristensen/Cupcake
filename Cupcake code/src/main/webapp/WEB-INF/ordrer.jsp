@@ -23,7 +23,7 @@
 </head>
 
 <body>
-<%@include file="includes/header.inc"%>
+<%@include file="../includes/header.inc"%>
 <div style="background-color: #c6c8d1; border-radius: 20px; width: auto; height: auto; margin-top: 50px">
     <h1 style="margin-left: 15px">Velkommen til Olsker cupcakes</h1>
     <h2 style="margin-left: 15px">Her kan du se alle ordrer</h2>
