@@ -17,11 +17,12 @@ import java.sql.Statement;
 
 
 public class OrdreMapper {
-
+    //Her sender den ordren til databasen når kunden trykker på køb knappen i kurven
     public static int createOrdre(int userID, double pris) throws LoginSampleException {
         try {
             Connection con = Connector.connection();
-            String SQL = "INSERT INTO ordrer VALUES(null,?,?, false);";
+            //her indsætter vi en ordre og userID bliver sat ind på det første ? og pris på det andet ?
+            String SQL = "INSERT INTO ordre VALUES(null,?,?, true);";
             PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, userID);
             ps.setDouble(2, pris);
@@ -36,14 +37,16 @@ public class OrdreMapper {
         }
     }
 
-    public static void createOrdreList(int orderId, String top, String bottom, int antal) throws LoginSampleException {
+    //laver liste over ordrene
+    public static void createOrdreList(int orderId, String top, String bot, int antal) throws LoginSampleException {
         try {
             Connection con = Connector.connection();
+            //Vi har ikke fået lavet antal i vores database.
             String SQL = "insert into cupcake Values(?,?,?,?);";
             PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, orderId);
             ps.setString(2, top);
-            ps.setString(3, bottom);
+            ps.setString(3, bot);
             ps.setInt(4, antal);
             ps.executeUpdate();
 
@@ -52,6 +55,7 @@ public class OrdreMapper {
         }
     }
 
+    //En metode der updatere kundens saldo
     public static void updaterSaldo(double nySaldo, int userId) throws LoginSampleException {
         try {
             Connection con = Connector.connection();

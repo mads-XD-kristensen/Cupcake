@@ -28,7 +28,7 @@
     <h2 style="margin-left: 15px">Her kan du se din kurv</h2>
 
 </div>
-
+<%-- Det her er en tavel med cupcake informationer --%>
 <div class="container">
     <table class="table">
         <thead>
@@ -41,20 +41,26 @@
         </tr>
         </thead>
         <tbody>
-<%-- todo gøre så at man kan få topping, bund, antal og en pris frem på en linje --%>
+        <%-- todo gøre så at man kan få topping, bund, antal og en pris frem på en linje --%>
+        <%-- Her skal den tage informationerne som customer har skrevet ind og den skal printe dem ud  --%>
         <c:forEach items="${sessionScope.basket} " varStatus="count">
             <tr>
+                    <%-- hvilket nr af ordre --%>
                 <th>${count.index+1}</th>
+                    <%-- Her skriver den topping ud --%>
                 <th>${DataMapper.listTop(count.index)}</th>
+                    <%-- Her skriver den bunde ud --%>
                 <th>${DataMapper.listBot(count.index)}</th>
-                <th></th>
-                <th></th>
+
+                <th><%-- Her skal den skrive antal ud --%></th>
+                <th><%-- Her skal den skrive prisen ud for de enkelte cupcakes --%></th>
             </tr>
         </c:forEach>
-<%-- todo gøre så der kommer en samlet pris --%>
+        <%-- todo gøre så der kommer en samlet pris --%>
         <tr>
             <th>IALT:</th>
             <th>
+                <%-- Her er det meningen at den skal skrive den sammenlagte pris ud --%>
                 <c:forEach items="${sessionScope.basket}" varStatus="Count">
 
                 </c:forEach>
@@ -64,6 +70,7 @@
     </table>
 </div>
 <%-- todo gøre så at når man trykker på køb så bliver ordren sent til databasen og penge bliver trukket fra brugeren --%>
+<%-- Her er vores knap som skal gøre at når man trykker på den vil den sende ordren til databasen og trække penge fra brugeren --%>
 <div class="col-lg-6>">
     <form action="FrontController" method="post">
         <input type="hidden" name="taget" value="koeb">

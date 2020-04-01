@@ -20,6 +20,7 @@
 <body>
 <%@include file="../includes/header.inc" %>
 <h3>Her kan du tilføje saldo til en kunde</h3>
+<%-- En form der gør at du kan putte penge på en kundes konto --%>
 <div>
     <form action="FrontController" method="post">
         <input type="hidden" name="taget" value="addSaldo">

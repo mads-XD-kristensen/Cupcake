@@ -21,10 +21,12 @@
 
 <form action="FrontController" method="post">
     <input type="hidden" name="taget" value="addToBasket">
-
+    <%-- Denne "div class er noget bootstrap" --%>
     <div class="form-group col-lg-2">
+        <%-- Vores dropdown menu --%>
         <select required class="form-control number-input" id="topMenu" name="top">
             <option value="" disabled selected>Vælg top</option>
+            <%-- forEach henter vores cupcake tops via collectTopping --%>
             <c:forEach var="element" items="${DataMapper.collectTopping()}" varStatus="Count">
                 <option value="${Count.index +1}">
                         ${element.getName()}
@@ -33,6 +35,7 @@
         </select>
     </div>
 
+    <%-- Det samme men for cupcake bunde --%>
     <div class="form-group col-lg-2">
         <select required class="form-control number-input" id="botMenu" name="bot">
             <option value="" disabled selected>Vælg bund</option>
@@ -43,9 +46,11 @@
             </c:forEach>
         </select>
     </div>
+    <%-- Her vælger customer antal af cupcakes --%>
     <div class="col-lg-1">
         <input class="form-control number-input" type="number" value="1" id="example-number-input" name="antal">
     </div>
+    <%-- Submit button. Deres ordre bliver sat på sessionScope så vi kan bruge den i kurv --%>
     <div>
         <button class="btn btn-primary" type="submit" value="Submit">Føj til kurven</button>
     </div>

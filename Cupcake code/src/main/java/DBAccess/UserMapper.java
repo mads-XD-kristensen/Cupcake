@@ -11,7 +11,7 @@ import java.sql.Statement;
 
 
 public class UserMapper {
-
+    //Den der gør at når du opretter en bruger bliver sendt til databasen
     public static void createUser(User user) throws LoginSampleException {
         try {
             Connection con = Connector.connection();
@@ -32,6 +32,8 @@ public class UserMapper {
         }
     }
 
+    //Det her er login den finder ud af om der er noget email og password som matcher
+    //Når brugeren prøver at logge ind
     public static User login(String email, String password) throws LoginSampleException {
         try {
             Connection con = Connector.connection();

@@ -26,7 +26,6 @@
 <body>
 <%@include file="../includes/header.inc" %>
 
-
 <div style="background-color: #c6c8d1; border-radius: 20px; width: auto; height: auto; margin-top: 5px;"><br>
     <h1 class="text">Velkommen til Olsker cupcakes</h1>
     <br>
@@ -35,6 +34,7 @@
         <tr>
             <td></td>
             <td>
+                <%-- Her logger man ind --%>
                 <form name="login" action="FrontController" method="POST">
                     <input type="hidden" name="taget" value="login">
                     Email:<br>
@@ -52,9 +52,9 @@
     <h2 class="text">Eller opret dig som bruger her</h2>
     <table class="text">
         <tr>
-
             <td></td>
             <td>
+                <%-- Her opretter du dig som bruger --%>
                 <form name="register" action="FrontController" method="POST">
                     <input type="hidden" name="taget" value="register">
                     Email:<br>
